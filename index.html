@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مملكة أمونة الغالية 👑❤️</title>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffecd2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #333;
+            overflow-x: hidden;
+            user-select: none;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .container {
+            background: #ffffff;
+            padding: 25px 20px;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(214, 48, 49, 0.18);
+            max-width: 460px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            border: 3px solid #ffeaa7;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff5f5;
+            padding: 8px 15px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #d63031;
+            font-size: 15px;
+            border: 1px solid #fab1a0;
+        }
+        h1 { color: #d63031; font-size: 24px; margin: 10px 0; }
+        h2 { color: #e17055; font-size: 20px; margin: 10px 0; }
+        p { font-size: 17px; line-height: 1.6; color: #444; }
+        .btn {
+            background: linear-gradient(45deg, #d63031, #e84393);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 8px 5px;
+            font-weight: bold;
+            box-shadow: 0 6px 18px rgba(214, 48, 49, 0.3);
+        }
+        .btn:active { transform: scale(0.96); }
+        .option-btn {
+            display: block;
+            width: 100%;
+            background: #fff0f3;
+            color: #d63031;
+            border: 2px solid #fab1a0;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 15px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .option-btn:active { background: #fab1a0; color: white; }
+        .stage { display: none; }
+        .active { display: block; }
+        
+        .falling-item {
+            position: fixed;
+            font-size: 44px;
+            cursor: pointer;
+            z-index: 50;
+            animation: drop linear forwards;
+        }
+        @keyframes drop {
+            from { top: -60px; }
+            to { top: 105vh; }
+        }
+        .score-bar {
+            background: #ffeaa7;
+            padding: 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #d35400;
+            margin: 10px 0;
+        }
+        
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .mem-card {
+            background: linear-gradient(135deg, #e84393, #fd79a8);
+            height: 65px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .mem-card.flipped {
+            background: #fff5f5;
+            border: 2px solid #e84393;
+        }
+
+        .sisters-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .sister-btn {
+            padding: 15px;
+            font-size: 19px;
+            font-weight: bold;
+            border-radius: 18px;
+            border: 2px solid #e84393;
+            background: #fff0f6;
+            color: #c2185b;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .sister-btn.lama-btn {
+            background: linear-gradient(45deg, #e84393, #d63031);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.4);
+        }
+
+        .meter-bg {
+            width: 100%;
+            height: 28px;
+            background: #ffeaa7;
+            border-radius: 50px;
+            overflow: hidden;
+            margin: 15px 0;
+            border: 2px solid #fdcb6e;
+        }
+        .meter-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff7675, #d63031);
+            transition: width 0.15s;
+        }
+
+        .funny-note {
+            color: #d63031;
+            font-weight: bold;
+            font-size: 16px;
+            min-height: 28px;
+            margin-top: 12px;
+        }
+
+        .gift-box {
+            font-size: 85px;
+            cursor: pointer;
+            display: inline-block;
+            animation: bounce 1.5s infinite;
+            margin: 15px 0;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .prize-badge {
+            background: #ffeaa7;
+            border: 2px dashed #d35400;
+            padding: 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            color: #d35400;
+            font-size: 18px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-bar">
+        <span>👑 مملكة أمونة</span>
+        <span>نقاط الحب: <span id="total-coins">0</span> ❤️</span>
+    </div>
+
+    <div id="stage-0" class="stage active">
+        <h1>✨ أهلاً بأحلى أمونة في الكون ✨</h1>
+        <p>تم برمجة هذه اللعبة السرية خصيصاً لإلك يا ست الحبايب <b>إيمان</b>! قدامك <b>6 مراحل ممتعة ومضحكة</b>، كل ما تفوزي بمرحلة رح تجمعي نقاط حب وتفتحي هديتك الكبيرة في النهاية.</p>
+        <button class="btn" onclick="goStage(1)">يلا نبدأ التحدي يا أمونة 🚀</button>
+    </div>
+
+    <div id="stage-1" class="stage">
+        <h2>المرحلة 1: اختبار الحقيقة 😂</h2>
+        <p id="q-text">سؤال 1: لما نضيع غرض بالبيت ونسألك يا أمونة، وين بيكون مكانه غالباً؟</p>
+        <div id="options-box">
+            <button class="option-btn" onclick="checkQ(1, 0)">سافر على المريخ 👽</button>
+            <button class="option-btn" onclick="checkQ(1, 1)">قدام عيوننا بس إحنا ما بنشوف 👀</button>
+            <button class="option-btn" onclick="checkQ(1, 0)">أكيد الجيران أخدوه 🏃‍♂️</button>
+        </div>
+        <div id="q-feedback" class="funny-note"></div>
+    </div>
+
+    <div id="stage-2" class="stage">
+        <h2>المرحلة 2: مهمة روقان أمونة ☕🌸</h2>
+        <p style="font-size: 15px;">اضغطي بسرعة واجمعي <b>12</b> أشياء حلوة (❤️ ☕ 🌸 🍫 👑) واهربي من الكراكيب (🧦 🧹)!</p>
+        <div class="score-bar">الرصيد: <span id="game-score">0</span> / 12</div>
+        <div id="game-feedback" class="funny-note">ركزي يا أمونة واضغطي عالأشياء اللي بتنزل!</div>
+    </div>
+
+    <div id="stage-3" class="stage">
+        <h2>المرحلة 3: ذاكرة ملكة البيت 🧠✨</h2>
+        <p style="font-size: 15px;">اقلبي البطاقات وطلّعي كل صورتين بيشبهوا بعض!</p>
+        <div class="memory-grid" id="memory-board"></div>
+        <div id="mem-feedback" class="funny-note">يلا نشوف قوة التركيز يا أمونة!</div>
+    </div>
+
+    <div id="stage-4" class="stage">
+        <h2>المرحلة 4: السؤال المصيري 🤭👑</h2>
+        <p>بصراحة وبدون مجاملة يا أمونة.. <b>مين أكتر وحدة بتحلي الحياة وبتنور البيت في بناتك؟</b></p>
+        <div class="sisters-grid">
+            <button class="sister-btn lama-btn" onclick="pickLama()">لمى 👑❤️</button>
+            <button class="sister-btn" id="btn-hala" onclick="badSister(1)">حلا 🌸</button>
+            <button class="sister-btn" id="btn-hoor" onclick="badSister(2)">حور ✨</button>
+            <button class="sister-btn" id="btn-misk" onclick="badSister(3)">مسك 🍬</button>
+        </div>
+        <div id="sister-feedback" class="funny-note">اختاري بكل شفافية وديمقراطية 😉</div>
+    </div>
+
+    <div id="stage-5" class="stage">
+        <h2>المرحلة 5: شحن طاقة الحب ❤️⚡</h2>
+        <p>اضغطي بسرعة متتالية على القلب الكبير عشان يتعبى العداد 100% وتنفتح الهدية!</p>
+        <div class="meter-bg"><div class="meter-fill" id="love-fill"></div></div>
+        <div style="font-size: 75px; cursor: pointer;" onclick="addLove(this)">💖</div>
+        <div id="love-feedback" class="funny-note">اضغطي بسرعة يا أمونة! 0%</div>
+    </div>
+
+    <div id="stage-6" class="stage">
+        <h2>المرحلة الأخيرة: صندوق مفاجأة أمونة 🎁</h2>
+        <p>وصلتِ للنهاية بنجاح باهر! اضغطي على الهدية عشان تشوفي جائزتك ورسالتك الخاصة:</p>
+        <div class="gift-box" onclick="showPrize()">🎁</div>
+        <div class="funny-note">اضغطي عالهدية اللي بتنط!</div>
+    </div>
+
+    <div id="stage-7" class="stage">
+        <h1>🎉 مبروك الفوز يا أغلى أمونة! 🎉</h1>
+        <div class="prize-badge" id="prize-text"></div>
+        <p style="text-align: justify; background: #fff9f9; padding: 15px; border-radius: 15px; border: 1px dashed #fab1a0; font-size: 16px;">
+            أمي الحبيبة <b>إيمان (أمونة)</b>، يا بركة البيت ونور حياتنا.. مهما لعبنا ومهما حكينا، ما في كلام يوفيكِ حقك ولا تعبك معنا. وجودك بحياتي هو أكبر نعمة، وضحكتك بتسوى الدنيا وما فيها. الله يطول بعمرك ويعطيكِ الصحة والعافية ويخليكِ تاج فوق راسنا طول العمر. بحبك قد الدنيا وأكتر! ❤️🌹✨<br>
+            <b style="color:#d63031;">— من بنتك اللي بتحبك أكتر شي: لمى 👑</b>
+        </p>
+        <button class="btn" onclick="boom()">احتفال إضافي لعيون أمونة 🎊</button>
